@@ -46,9 +46,10 @@ namespace TCC_PDI.Forms
             // 
             this.picBoxCam.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.picBoxCam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxCam.Location = new System.Drawing.Point(213, 45);
+            this.picBoxCam.Location = new System.Drawing.Point(186, 34);
+            this.picBoxCam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picBoxCam.Name = "picBoxCam";
-            this.picBoxCam.Size = new System.Drawing.Size(388, 314);
+            this.picBoxCam.Size = new System.Drawing.Size(340, 236);
             this.picBoxCam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBoxCam.TabIndex = 0;
             this.picBoxCam.TabStop = false;
@@ -56,9 +57,10 @@ namespace TCC_PDI.Forms
             // 
             // carregar_img
             // 
-            this.carregar_img.Location = new System.Drawing.Point(1117, 59);
+            this.carregar_img.Location = new System.Drawing.Point(977, 44);
+            this.carregar_img.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.carregar_img.Name = "carregar_img";
-            this.carregar_img.Size = new System.Drawing.Size(138, 58);
+            this.carregar_img.Size = new System.Drawing.Size(121, 44);
             this.carregar_img.TabIndex = 1;
             this.carregar_img.Text = "Carregar";
             this.carregar_img.UseVisualStyleBackColor = true;
@@ -66,19 +68,21 @@ namespace TCC_PDI.Forms
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(357, 439);
+            this.trackBar1.Location = new System.Drawing.Point(312, 329);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trackBar1.Maximum = 255;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(388, 56);
+            this.trackBar1.Size = new System.Drawing.Size(340, 45);
             this.trackBar1.TabIndex = 2;
             this.trackBar1.Value = 127;
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
             // dados_img
             // 
-            this.dados_img.Location = new System.Drawing.Point(1117, 151);
+            this.dados_img.Location = new System.Drawing.Point(977, 113);
+            this.dados_img.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dados_img.Name = "dados_img";
-            this.dados_img.Size = new System.Drawing.Size(138, 58);
+            this.dados_img.Size = new System.Drawing.Size(121, 44);
             this.dados_img.TabIndex = 3;
             this.dados_img.Text = "Gerar Dados";
             this.dados_img.UseVisualStyleBackColor = true;
@@ -92,9 +96,10 @@ namespace TCC_PDI.Forms
             // 
             this.picBoxImg.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.picBoxImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxImg.Location = new System.Drawing.Point(634, 45);
+            this.picBoxImg.Location = new System.Drawing.Point(555, 34);
+            this.picBoxImg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picBoxImg.Name = "picBoxImg";
-            this.picBoxImg.Size = new System.Drawing.Size(388, 314);
+            this.picBoxImg.Size = new System.Drawing.Size(340, 236);
             this.picBoxImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxImg.TabIndex = 0;
             this.picBoxImg.TabStop = false;
@@ -104,16 +109,19 @@ namespace TCC_PDI.Forms
             // 
             this.cmbCameras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCameras.FormattingEnabled = true;
-            this.cmbCameras.Location = new System.Drawing.Point(213, 366);
+            this.cmbCameras.Location = new System.Drawing.Point(186, 274);
+            this.cmbCameras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCameras.Name = "cmbCameras";
-            this.cmbCameras.Size = new System.Drawing.Size(388, 28);
+            this.cmbCameras.Size = new System.Drawing.Size(340, 23);
             this.cmbCameras.TabIndex = 4;
+            this.cmbCameras.SelectedIndexChanged += new System.EventHandler(this.cmbCameras_SelectedIndexChanged);
             // 
             // TirarFoto
             // 
-            this.TirarFoto.Location = new System.Drawing.Point(634, 364);
+            this.TirarFoto.Location = new System.Drawing.Point(555, 273);
+            this.TirarFoto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TirarFoto.Name = "TirarFoto";
-            this.TirarFoto.Size = new System.Drawing.Size(388, 29);
+            this.TirarFoto.Size = new System.Drawing.Size(340, 22);
             this.TirarFoto.TabIndex = 5;
             this.TirarFoto.Text = "Tirar foto";
             this.TirarFoto.UseVisualStyleBackColor = true;
@@ -121,9 +129,9 @@ namespace TCC_PDI.Forms
             // 
             // FormImage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1341, 558);
+            this.ClientSize = new System.Drawing.Size(1173, 418);
             this.Controls.Add(this.TirarFoto);
             this.Controls.Add(this.cmbCameras);
             this.Controls.Add(this.dados_img);
@@ -131,6 +139,7 @@ namespace TCC_PDI.Forms
             this.Controls.Add(this.carregar_img);
             this.Controls.Add(this.picBoxImg);
             this.Controls.Add(this.picBoxCam);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormImage";
             this.Text = "FormImage";
             this.Load += new System.EventHandler(this.FormImage_Load);

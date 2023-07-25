@@ -1,5 +1,4 @@
-﻿using AForge.Video;
-using AForge.Video.DirectShow;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,69 +9,48 @@ using System.Windows.Forms;
 
 namespace TCC_PDI.Forms
 {
-    public partial class FormImage : Form
+    public partial class FormUpload_IMG : Form
     {
-
-        FilterInfoCollection filterInfoCollection;
-        VideoCaptureDevice videoCaptureDevice;
+        public FormUpload_IMG()
+        {
+            InitializeComponent();
+        }
 
         Bitmap img = new Bitmap(@"CAIXA.jpg");
         int coluna = 0;
         int linha = 0;
         bool verf = false;
-        DateTime dia = DateTime.Now;
         float area = 0;
+        string nomeFormatado = DateTime.Now.ToString("dd_MM_yyyy-HH_mm_ss");
         Color cor;
 
-        public FormImage()
+
+        void abrir_Banco()
         {
-            InitializeComponent();
+            string database = "SERVER=databasedojapa.c4fsrgel8mzi.sa-east-1.rds.amazonaws.com;DATABASE=PDI;UID=root;PASSWORD=euamoopaulo;";
+            MySqlConnection connection = new MySqlConnection(database);
+            MySqlCommand command = connection.CreateCommand();
+            connection.Open();
 
-            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo filterInfo in filterInfoCollection)
-                cmbCameras.Items.Add(filterInfo.Name);
-
-            cmbCameras.SelectedIndex = 0;
-            videoCaptureDevice = new VideoCaptureDevice();
         }
 
-        private void FormImage_Load(object sender, EventArgs e)
+
+
+        private void picBoxImg_Click(object sender, EventArgs e)
         {
-
-            videoCaptureDevice = new VideoCaptureDevice
-                (filterInfoCollection[cmbCameras.SelectedIndex].MonikerString);
-
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
-        }
-
-        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs e)
-        {
-            picBoxCam.Image = (Bitmap)e.Frame.Clone();
-        }
-
-        private void TirarFoto_Click(object sender, EventArgs e)
-        {
-            Clipboard.Clear();
-            Clipboard.SetImage(picBoxCam.Image);
-            picBoxImg.Image = Clipboard.GetImage();
-            Clipboard.Clear();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        /*openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+            openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                picBoxCam.Image = new Bitmap(openFileDialog1.FileName);
-    
-            }*/
+                picBoxImg.Image = new Bitmap(openFileDialog1.FileName);
+
+            }
 
         }
+
+        /*------------------------------------------*/
 
         private void carregar_img_Click(object sender, EventArgs e)
         {
-       
             verf = true;
             coluna = img.Width; // O número colunas 
             linha = img.Height; // O número de linhas
@@ -98,48 +76,21 @@ namespace TCC_PDI.Forms
 
                 }
             }
-            imgnova.Save("novaImagem.jpg");
+            
+            imgnova.Save(nomeFormatado+".jpg");
             picBoxImg.Image = imgnova;
         }
 
-
-
-
-        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
-        {
-            coluna = img.Width;
-            linha = img.Height;
-            Bitmap imgnova = new Bitmap(coluna, linha);
-            cor = new Color();
-
-            for (int i = 0; i <= coluna - 1; i++)
-            {
-                for (int j = 0; j <= linha - 1; j++)
-                {
-                    double r = img.GetPixel(i, j).R;
-                    double g = img.GetPixel(i, j).G;
-                    double b = img.GetPixel(i, j).B;
-
-                    double K = r * 0.3 + g * 0.59 + b * 0.11;
-
-                    if (K >= trackBar1.Value)
-                        K = 255;
-                    else
-                        K = 0;
-
-                    cor = Color.FromArgb((int)K, (int)K, (int)K);
-                    imgnova.SetPixel(i, j, cor);
-
-                }
-            }
-
-            //imgnova.Save("novaImagem.jpg");
-            picBoxImg.Image = imgnova;
-        }
+        /*------------------------------------------*/
 
         private void dados_img_Click(object sender, EventArgs e)
         {
-            Bitmap imgnova = new Bitmap("novaImagem.jpg");
+            string database = "SERVER=databasedojapa.c4fsrgel8mzi.sa-east-1.rds.amazonaws.com;DATABASE=PDI;UID=root;PASSWORD=euamoopaulo;";
+            MySqlConnection connection = new MySqlConnection(database);
+            MySqlCommand command = connection.CreateCommand();
+            connection.Open();
+
+            Bitmap imgnova = new Bitmap(nomeFormatado+".jpg");
             coluna = imgnova.Width;
             linha = imgnova.Height;
             int pixelsB = 0;
@@ -173,12 +124,44 @@ namespace TCC_PDI.Forms
                 MessageBox.Show("PROCESSE A IMAGEM PRIMEIRO!");
             }
 
+            command.CommandText = "INSERT INTO dados_projeto (imagem) VALUES('" + imgnova + "');";
+
+
             MessageBox.Show(((int)area).ToString() + "% da área total vazia.");
         }
 
-        private void cmbCameras_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            coluna = img.Width;
+            linha = img.Height;
+            Bitmap imgnova = new Bitmap(coluna, linha);
+            cor = new Color();
+
+            for (int i = 0; i <= coluna - 1; i++)
+            {
+                for (int j = 0; j <= linha - 1; j++)
+                {
+                    double r = img.GetPixel(i, j).R;
+                    double g = img.GetPixel(i, j).G;
+                    double b = img.GetPixel(i, j).B;
+
+                    double K = r * 0.3 + g * 0.59 + b * 0.11;
+
+                    if (K >= trackBar1.Value)
+                        K = 255;
+                    else
+                        K = 0;
+
+                    cor = Color.FromArgb((int)K, (int)K, (int)K);
+                    imgnova.SetPixel(i, j, cor);
+
+                }
+            }
+        
+            picBoxImg.Image = imgnova;
         }
     }
 }

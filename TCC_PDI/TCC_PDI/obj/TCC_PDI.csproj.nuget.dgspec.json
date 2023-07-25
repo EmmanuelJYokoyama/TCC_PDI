@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programação\\C#\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {}
+    "D:\\Programação\\C#\\PROC_IMG\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {}
   },
   "projects": {
-    "D:\\Programação\\C#\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {
+    "D:\\Programação\\C#\\PROC_IMG\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programação\\C#\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
+        "projectUniqueName": "D:\\Programação\\C#\\PROC_IMG\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
         "projectName": "TCC_PDI",
-        "projectPath": "D:\\Programação\\C#\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
+        "projectPath": "D:\\Programação\\C#\\PROC_IMG\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
         "packagesPath": "C:\\Users\\emman\\.nuget\\packages\\",
-        "outputPath": "D:\\Programação\\C#\\TCC_PDI\\TCC_PDI\\TCC_PDI\\obj\\",
+        "outputPath": "D:\\Programação\\C#\\PROC_IMG\\TCC_PDI\\TCC_PDI\\TCC_PDI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\emman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,6 +55,10 @@
             "FontAwesome.Sharp": {
               "target": "Package",
               "version": "[6.3.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.1.0, )"
             }
           },
           "imports": [
@@ -71,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

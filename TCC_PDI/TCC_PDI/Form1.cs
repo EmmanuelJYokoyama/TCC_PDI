@@ -117,7 +117,7 @@ namespace TCC_PDI
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            AbrirJanela(sender, new Forms.FormSettings());
+            AbrirJanela(sender, new Forms.FormUpload_IMG());
             lblTitle.Text = "CONFIGURAÇÕES";
         }
 
