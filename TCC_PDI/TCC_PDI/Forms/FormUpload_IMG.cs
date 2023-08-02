@@ -16,7 +16,7 @@ namespace TCC_PDI.Forms
             InitializeComponent();
         }
 
-        Bitmap img = new Bitmap(@"CAIXA.jpg");
+        Bitmap img = new Bitmap(@"CAIXA2.jpg");
         int coluna = 0;
         int linha = 0;
         bool verf = false;

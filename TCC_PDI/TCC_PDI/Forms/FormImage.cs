@@ -16,12 +16,12 @@ namespace TCC_PDI.Forms
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
 
-        Bitmap img = new Bitmap(@"CAIXA.jpg");
         int coluna = 0;
         int linha = 0;
         bool verf = false;
-        DateTime dia = DateTime.Now;
+        string nomeFormatado = DateTime.Now.ToString("dd_MM_yyyy-HH_mm_ss");
         float area = 0;
+        //Bitmap img = new Bitmap(@".jpg");
         Color cor;
 
         public FormImage()
@@ -49,14 +49,15 @@ namespace TCC_PDI.Forms
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs e)
         {
             picBoxCam.Image = (Bitmap)e.Frame.Clone();
+
         }
 
         private void TirarFoto_Click(object sender, EventArgs e)
         {
-            Clipboard.Clear();
-            Clipboard.SetImage(picBoxCam.Image);
-            picBoxImg.Image = Clipboard.GetImage();
-            Clipboard.Clear();
+            //Clipboard.Clear();
+          //  Clipboard.SetImage(picBoxCam.Image);
+           // picBoxImg.Image = Clipboard.GetImage();
+          //  Clipboard.Clear();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace TCC_PDI.Forms
 
         private void carregar_img_Click(object sender, EventArgs e)
         {
-       
+            Bitmap img = new Bitmap(picBoxCam.Image);
             verf = true;
             coluna = img.Width; // O número colunas 
             linha = img.Height; // O número de linhas
@@ -98,7 +99,7 @@ namespace TCC_PDI.Forms
 
                 }
             }
-            imgnova.Save("novaImagem.jpg");
+            imgnova.Save(nomeFormatado + ".jpg");
             picBoxImg.Image = imgnova;
         }
 
@@ -107,6 +108,7 @@ namespace TCC_PDI.Forms
 
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
+            Bitmap img = new Bitmap(picBoxImg.Image);
             coluna = img.Width;
             linha = img.Height;
             Bitmap imgnova = new Bitmap(coluna, linha);
@@ -139,7 +141,7 @@ namespace TCC_PDI.Forms
 
         private void dados_img_Click(object sender, EventArgs e)
         {
-            Bitmap imgnova = new Bitmap("novaImagem.jpg");
+            Bitmap imgnova = new Bitmap(nomeFormatado+".jpg");
             coluna = imgnova.Width;
             linha = imgnova.Height;
             int pixelsB = 0;
