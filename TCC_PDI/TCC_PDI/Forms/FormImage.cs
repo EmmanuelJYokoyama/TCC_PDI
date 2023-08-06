@@ -21,8 +21,11 @@ namespace TCC_PDI.Forms
         bool verf = false;
         string nomeFormatado = DateTime.Now.ToString("dd_MM_yyyy-HH_mm_ss");
         float area = 0;
-        //Bitmap img = new Bitmap(@".jpg");
         Color cor;
+        Bitmap img;
+        Bitmap imgnova;
+
+
 
         public FormImage()
         {
@@ -49,35 +52,25 @@ namespace TCC_PDI.Forms
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs e)
         {
             picBoxCam.Image = (Bitmap)e.Frame.Clone();
-
+            GC.Collect();
         }
 
-        private void TirarFoto_Click(object sender, EventArgs e)
-        {
-            //Clipboard.Clear();
-          //  Clipboard.SetImage(picBoxCam.Image);
-           // picBoxImg.Image = Clipboard.GetImage();
-          //  Clipboard.Clear();
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-        /*openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                picBoxCam.Image = new Bitmap(openFileDialog1.FileName);
-    
-            }*/
+        
 
         }
 
+        /*----------------------------------------------------------------*/
+
         private void carregar_img_Click(object sender, EventArgs e)
         {
-            Bitmap img = new Bitmap(picBoxCam.Image);
+            img = new Bitmap(picBoxCam.Image);
             verf = true;
             coluna = img.Width; // O número colunas 
             linha = img.Height; // O número de linhas
-            Bitmap imgnova = new Bitmap(coluna, linha);
+            imgnova = new Bitmap(coluna, linha);
             cor = new Color();
             for (int i = 0; i <= coluna - 1; i++)
             {
@@ -101,47 +94,55 @@ namespace TCC_PDI.Forms
             }
             imgnova.Save(nomeFormatado + ".jpg");
             picBoxImg.Image = imgnova;
+            GC.Collect();
+            
         }
 
-
-
+        /*----------------------------------------------------------------*/
 
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
-            Bitmap img = new Bitmap(picBoxImg.Image);
-            coluna = img.Width;
-            linha = img.Height;
-            Bitmap imgnova = new Bitmap(coluna, linha);
-            cor = new Color();
+           if (picBoxImg.Image == null ){
+                MessageBox.Show("CARREGUE A IMAGEM");
 
-            for (int i = 0; i <= coluna - 1; i++)
-            {
-                for (int j = 0; j <= linha - 1; j++)
+           }else{
+                coluna = img.Width;
+                linha = img.Height;
+                imgnova = new Bitmap(coluna, linha);
+                cor = new Color();
+
+                for (int i = 0; i <= coluna - 1; i++)
                 {
-                    double r = img.GetPixel(i, j).R;
-                    double g = img.GetPixel(i, j).G;
-                    double b = img.GetPixel(i, j).B;
+                    for (int j = 0; j <= linha - 1; j++)
+                    {
+                        double r = img.GetPixel(i, j).R;
+                        double g = img.GetPixel(i, j).G;
+                        double b = img.GetPixel(i, j).B;
 
-                    double K = r * 0.3 + g * 0.59 + b * 0.11;
+                        double K = r * 0.3 + g * 0.59 + b * 0.11;
 
-                    if (K >= trackBar1.Value)
-                        K = 255;
-                    else
-                        K = 0;
+                        if (K >= trackBar1.Value)
+                            K = 255;
+                        else
+                            K = 0;
 
-                    cor = Color.FromArgb((int)K, (int)K, (int)K);
-                    imgnova.SetPixel(i, j, cor);
+                        cor = Color.FromArgb((int)K, (int)K, (int)K);
+                        imgnova.SetPixel(i, j, cor);
 
+                    }
                 }
-            }
+                picBoxImg.Image = imgnova;
+                GC.Collect();
 
-            //imgnova.Save("novaImagem.jpg");
-            picBoxImg.Image = imgnova;
+            }
+            
         }
+
+        /*----------------------------------------------------------------*/
 
         private void dados_img_Click(object sender, EventArgs e)
         {
-            Bitmap imgnova = new Bitmap(nomeFormatado+".jpg");
+            imgnova = new Bitmap(nomeFormatado+".jpg");
             coluna = imgnova.Width;
             linha = imgnova.Height;
             int pixelsB = 0;
@@ -175,10 +176,17 @@ namespace TCC_PDI.Forms
                 MessageBox.Show("PROCESSE A IMAGEM PRIMEIRO!");
             }
 
-            MessageBox.Show(((int)area).ToString() + "% da área total vazia.");
+            label2.Text = (((int)area).ToString() + "% da área total vazia.");
         }
 
+        /*----------------------------------------------------------------*/
+
         private void cmbCameras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -36,7 +36,10 @@ namespace TCC_PDI.Forms
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.picBoxImg = new System.Windows.Forms.PictureBox();
             this.cmbCameras = new System.Windows.Forms.ComboBox();
-            this.TirarFoto = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxImg)).BeginInit();
@@ -57,7 +60,7 @@ namespace TCC_PDI.Forms
             // 
             // carregar_img
             // 
-            this.carregar_img.Location = new System.Drawing.Point(977, 44);
+            this.carregar_img.Location = new System.Drawing.Point(977, 95);
             this.carregar_img.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.carregar_img.Name = "carregar_img";
             this.carregar_img.Size = new System.Drawing.Size(121, 44);
@@ -68,7 +71,7 @@ namespace TCC_PDI.Forms
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(312, 329);
+            this.trackBar1.Location = new System.Drawing.Point(555, 297);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trackBar1.Maximum = 255;
             this.trackBar1.Name = "trackBar1";
@@ -79,7 +82,7 @@ namespace TCC_PDI.Forms
             // 
             // dados_img
             // 
-            this.dados_img.Location = new System.Drawing.Point(977, 113);
+            this.dados_img.Location = new System.Drawing.Point(977, 186);
             this.dados_img.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dados_img.Name = "dados_img";
             this.dados_img.Size = new System.Drawing.Size(121, 44);
@@ -116,23 +119,56 @@ namespace TCC_PDI.Forms
             this.cmbCameras.TabIndex = 4;
             this.cmbCameras.SelectedIndexChanged += new System.EventHandler(this.cmbCameras_SelectedIndexChanged);
             // 
-            // TirarFoto
+            // label1
             // 
-            this.TirarFoto.Location = new System.Drawing.Point(555, 273);
-            this.TirarFoto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TirarFoto.Name = "TirarFoto";
-            this.TirarFoto.Size = new System.Drawing.Size(340, 22);
-            this.TirarFoto.TabIndex = 5;
-            this.TirarFoto.Text = "Tirar foto";
-            this.TirarFoto.UseVisualStyleBackColor = true;
-            this.TirarFoto.Click += new System.EventHandler(this.TirarFoto_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(186, 390);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 26);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Área total vazia: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(349, 395);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 19);
+            this.label2.TabIndex = 6;
+            this.label2.Text = ".";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(473, 429);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 19);
+            this.label3.TabIndex = 8;
+            this.label3.Text = ".";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(186, 424);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(281, 26);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Status de utilização de espaço: ";
             // 
             // FormImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 418);
-            this.Controls.Add(this.TirarFoto);
+            this.ClientSize = new System.Drawing.Size(1190, 546);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbCameras);
             this.Controls.Add(this.dados_img);
             this.Controls.Add(this.trackBar1);
@@ -160,6 +196,9 @@ namespace TCC_PDI.Forms
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox picBoxImg;
         private System.Windows.Forms.ComboBox cmbCameras;
-        private System.Windows.Forms.Button TirarFoto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

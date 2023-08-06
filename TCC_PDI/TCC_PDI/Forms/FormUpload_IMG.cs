@@ -16,11 +16,12 @@ namespace TCC_PDI.Forms
             InitializeComponent();
         }
 
-        Bitmap img = new Bitmap(@"CAIXA2.jpg");
+        
         int coluna = 0;
         int linha = 0;
         bool verf = false;
         float area = 0;
+        Bitmap img;
         string nomeFormatado = DateTime.Now.ToString("dd_MM_yyyy-HH_mm_ss");
         Color cor;
 
@@ -39,10 +40,12 @@ namespace TCC_PDI.Forms
         private void picBoxImg_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+            
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                img = new Bitmap(@"" + openFileDialog1.FileName);
                 picBoxImg.Image = new Bitmap(openFileDialog1.FileName);
-
+                
             }
 
         }
@@ -51,6 +54,7 @@ namespace TCC_PDI.Forms
 
         private void carregar_img_Click(object sender, EventArgs e)
         {
+            
             verf = true;
             coluna = img.Width; // O número colunas 
             linha = img.Height; // O número de linhas
@@ -79,6 +83,7 @@ namespace TCC_PDI.Forms
             
             imgnova.Save(nomeFormatado+".jpg");
             picBoxImg.Image = imgnova;
+            GC.Collect();
         }
 
         /*------------------------------------------*/
@@ -123,11 +128,14 @@ namespace TCC_PDI.Forms
             {
                 MessageBox.Show("PROCESSE A IMAGEM PRIMEIRO!");
             }
-
-            command.CommandText = "INSERT INTO dados_projeto (imagem) VALUES('" + imgnova + "');";
-
-
             MessageBox.Show(((int)area).ToString() + "% da área total vazia.");
+
+            command.CommandText = "INSERT INTO dados_projeto (`imagem`, `status`, `porcentagem`, `CODIGO_REL`) VALUES ('"+ imgnova.ToString() +"', 'INDEFINIDO' ,'"+ area.ToString() +"', '99999' );";
+            MySqlDataReader Query1 = command.ExecuteReader();
+
+            
+
+            connection.Close();
         }
 
 
