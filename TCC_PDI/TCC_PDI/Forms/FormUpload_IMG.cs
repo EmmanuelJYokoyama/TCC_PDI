@@ -130,8 +130,8 @@ namespace TCC_PDI.Forms
             }
             MessageBox.Show(((int)area).ToString() + "% da área total vazia.");
 
-            command.CommandText = "INSERT INTO dados_projeto (`imagem`, `status`, `porcentagem`, `CODIGO_REL`) VALUES ('"+ imgnova.ToString() +"', 'INDEFINIDO' ,'"+ area.ToString() +"', '99999' );";
-            MySqlDataReader Query1 = command.ExecuteReader();
+            //command.CommandText = "INSERT INTO dados_projeto (`imagem`, `status`, `porcentagem`, `CODIGO_REL`) VALUES ('"+ imgnova.ToString() +"', 'INDEFINIDO' ,'"+ area.ToString() +"', '99999' );";
+            //MySqlDataReader Query1 = command.ExecuteReader();
 
             
 
