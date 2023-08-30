@@ -109,12 +109,6 @@ namespace TCC_PDI
             lblTitle.Text = "PROJETOS";
         }
 
-        private void btnSetting_Click(object sender, EventArgs e)
-        {
-            AbrirJanela(sender, new Forms.FormUpload_IMG());
-            lblTitle.Text = "CARREGAR IMAGEM";
-        }
-
         private void logo_Click(object sender, EventArgs e)
         {
             Resetar();

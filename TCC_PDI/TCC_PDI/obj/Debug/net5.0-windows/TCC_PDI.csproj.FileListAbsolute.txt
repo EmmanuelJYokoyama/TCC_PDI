@@ -137,7 +137,6 @@ C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Forms.FormImage.resources
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Forms.FormProjects.resources
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Forms.FormReport.resources
-C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Forms.FormUpload_IMG.resources
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Forms.FormUser.resources
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.Properties.Resources.resources
 C:\Users\giuel\Área de Trabalho\POO2_ICG\TCC_PDI\TCC_PDI\TCC_PDI\obj\Debug\net5.0-windows\TCC_PDI.csproj.GenerateResource.cache

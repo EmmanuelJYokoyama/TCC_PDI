@@ -30,7 +30,6 @@ namespace TCC_PDI
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnSetting = new FontAwesome.Sharp.IconButton();
             this.btnProject = new FontAwesome.Sharp.IconButton();
             this.btnReport = new FontAwesome.Sharp.IconButton();
             this.btnImg = new FontAwesome.Sharp.IconButton();
@@ -50,7 +49,6 @@ namespace TCC_PDI
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panelMenu.Controls.Add(this.btnSetting);
             this.panelMenu.Controls.Add(this.btnProject);
             this.panelMenu.Controls.Add(this.btnReport);
             this.panelMenu.Controls.Add(this.btnImg);
@@ -61,28 +59,6 @@ namespace TCC_PDI
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(218, 675);
             this.panelMenu.TabIndex = 0;
-            // 
-            // btnSetting
-            // 
-            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSetting.FlatAppearance.BorderSize = 0;
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSetting.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSetting.IconChar = FontAwesome.Sharp.IconChar.Upload;
-            this.btnSetting.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnSetting.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSetting.IconSize = 40;
-            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(0, 393);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(218, 69);
-            this.btnSetting.TabIndex = 6;
-            this.btnSetting.Text = "Upload";
-            this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSetting.UseVisualStyleBackColor = true;
-            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // btnProject
             // 
@@ -256,7 +232,6 @@ namespace TCC_PDI
 
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
-        private FontAwesome.Sharp.IconButton btnSetting;
         private FontAwesome.Sharp.IconButton btnProject;
         private FontAwesome.Sharp.IconButton btnReport;
         private FontAwesome.Sharp.IconButton btnImg;

@@ -13,9 +13,6 @@
     <Compile Update="Forms\FormReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormUpload_IMG.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\FormUser.cs">
       <SubType>Form</SubType>
     </Compile>
