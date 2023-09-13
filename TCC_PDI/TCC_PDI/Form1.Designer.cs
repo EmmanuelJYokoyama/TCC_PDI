@@ -29,17 +29,18 @@ namespace TCC_PDI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnProject = new FontAwesome.Sharp.IconButton();
             this.btnReport = new FontAwesome.Sharp.IconButton();
             this.btnImg = new FontAwesome.Sharp.IconButton();
-            this.btnUser = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.logo = new System.Windows.Forms.PictureBox();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.panelWindow = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUser = new FontAwesome.Sharp.IconButton();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -49,10 +50,10 @@ namespace TCC_PDI
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.btnUser);
             this.panelMenu.Controls.Add(this.btnProject);
             this.panelMenu.Controls.Add(this.btnReport);
             this.panelMenu.Controls.Add(this.btnImg);
-            this.panelMenu.Controls.Add(this.btnUser);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -72,7 +73,7 @@ namespace TCC_PDI
             this.btnProject.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnProject.IconSize = 40;
             this.btnProject.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProject.Location = new System.Drawing.Point(0, 324);
+            this.btnProject.Location = new System.Drawing.Point(0, 255);
             this.btnProject.Name = "btnProject";
             this.btnProject.Size = new System.Drawing.Size(218, 69);
             this.btnProject.TabIndex = 5;
@@ -94,7 +95,7 @@ namespace TCC_PDI
             this.btnReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReport.IconSize = 40;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(0, 255);
+            this.btnReport.Location = new System.Drawing.Point(0, 186);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(218, 69);
             this.btnReport.TabIndex = 4;
@@ -116,7 +117,7 @@ namespace TCC_PDI
             this.btnImg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImg.IconSize = 40;
             this.btnImg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImg.Location = new System.Drawing.Point(0, 186);
+            this.btnImg.Location = new System.Drawing.Point(0, 117);
             this.btnImg.Name = "btnImg";
             this.btnImg.Size = new System.Drawing.Size(218, 69);
             this.btnImg.TabIndex = 3;
@@ -126,31 +127,9 @@ namespace TCC_PDI
             this.btnImg.UseVisualStyleBackColor = true;
             this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
             // 
-            // btnUser
-            // 
-            this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUser.FlatAppearance.BorderSize = 0;
-            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnUser.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnUser.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.btnUser.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnUser.IconSize = 40;
-            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(0, 117);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(218, 69);
-            this.btnUser.TabIndex = 2;
-            this.btnUser.Text = "User";
-            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUser.UseVisualStyleBackColor = true;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
             // panelLogo
             // 
-            this.panelLogo.BackColor = System.Drawing.SystemColors.Control;
+            this.panelLogo.BackColor = System.Drawing.Color.White;
             this.panelLogo.Controls.Add(this.logo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -160,11 +139,11 @@ namespace TCC_PDI
             // 
             // logo
             // 
-            this.logo.Image = global::TCC_PDI.Properties.Resources.TCC_2023_removebg;
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
             this.logo.Location = new System.Drawing.Point(24, 12);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(171, 88);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 1;
             this.logo.TabStop = false;
             this.logo.Click += new System.EventHandler(this.logo_Click);
@@ -179,20 +158,9 @@ namespace TCC_PDI
             this.panelTitleBar.Size = new System.Drawing.Size(1016, 117);
             this.panelTitleBar.TabIndex = 1;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(376, 41);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(102, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "HOME";
-            // 
             // panelWindow
             // 
+            this.panelWindow.BackColor = System.Drawing.Color.White;
             this.panelWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelWindow.Location = new System.Drawing.Point(218, 117);
             this.panelWindow.Name = "panelWindow";
@@ -207,6 +175,39 @@ namespace TCC_PDI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 25);
             this.panel1.TabIndex = 2;
+            // 
+            // btnUser
+            // 
+            this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUser.FlatAppearance.BorderSize = 0;
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUser.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnUser.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnUser.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUser.IconSize = 40;
+            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.Location = new System.Drawing.Point(0, 324);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(218, 69);
+            this.btnUser.TabIndex = 6;
+            this.btnUser.Text = "User";
+            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUser.UseVisualStyleBackColor = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(447, 42);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(102, 32);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "HOME";
             // 
             // Form1
             // 
@@ -235,12 +236,12 @@ namespace TCC_PDI
         private FontAwesome.Sharp.IconButton btnProject;
         private FontAwesome.Sharp.IconButton btnReport;
         private FontAwesome.Sharp.IconButton btnImg;
-        private FontAwesome.Sharp.IconButton btnUser;
         private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelWindow;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btnUser;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
 

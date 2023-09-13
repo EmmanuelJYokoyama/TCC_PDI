@@ -4,10 +4,13 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormModal.cs">
+    <Compile Update="FormCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="C:\Users\arthu\OneDrive\Documentos\TCC_10_09\EmmanuelJYokoyama\TCC_PDI\TCC_PDI backup.cs">
+    <Compile Update="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormImage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormProjects.cs">

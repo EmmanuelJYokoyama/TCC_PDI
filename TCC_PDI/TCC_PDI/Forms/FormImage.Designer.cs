@@ -152,9 +152,9 @@ namespace TCC_PDI.Forms
             // 
             // salvarImagem
             // 
-            this.salvarImagem.Location = new System.Drawing.Point(1045, 137);
+            this.salvarImagem.Location = new System.Drawing.Point(1043, 449);
             this.salvarImagem.Name = "salvarImagem";
-            this.salvarImagem.Size = new System.Drawing.Size(138, 314);
+            this.salvarImagem.Size = new System.Drawing.Size(181, 64);
             this.salvarImagem.TabIndex = 9;
             this.salvarImagem.Text = "Salvar Imagem";
             this.salvarImagem.UseVisualStyleBackColor = true;

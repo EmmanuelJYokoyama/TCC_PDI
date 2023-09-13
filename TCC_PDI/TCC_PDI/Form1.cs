@@ -14,8 +14,7 @@ namespace TCC_PDI
         //Construtor
         public Form1()
         {
-
-            using (FormModal modal = new FormModal())
+            using (FormLogin modal = new FormLogin())
             {
                 modal.ShowDialog();
             }
@@ -26,6 +25,7 @@ namespace TCC_PDI
             bordaBtn = new Panel();
             bordaBtn.Size = new Size(7, 70);
             panelMenu.Controls.Add(bordaBtn);
+            panelWindow = AbrirJanela()
         }
 
         //Métodos
