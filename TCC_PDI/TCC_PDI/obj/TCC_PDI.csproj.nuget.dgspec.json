@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aluno\\Source\\Repos\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {}
+    "C:\\Users\\arthu\\OneDrive\\Documentos\\TCC_10_09\\EmmanuelJYokoyama\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aluno\\Source\\Repos\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {
+    "C:\\Users\\arthu\\OneDrive\\Documentos\\TCC_10_09\\EmmanuelJYokoyama\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aluno\\Source\\Repos\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
+        "projectUniqueName": "C:\\Users\\arthu\\OneDrive\\Documentos\\TCC_10_09\\EmmanuelJYokoyama\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
         "projectName": "TCC_PDI",
-        "projectPath": "C:\\Users\\aluno\\Source\\Repos\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
-        "packagesPath": "C:\\Users\\aluno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aluno\\Source\\Repos\\TCC_PDI\\TCC_PDI\\TCC_PDI\\obj\\",
+        "projectPath": "C:\\Users\\arthu\\OneDrive\\Documentos\\TCC_10_09\\EmmanuelJYokoyama\\TCC_PDI\\TCC_PDI\\TCC_PDI\\TCC_PDI.csproj",
+        "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arthu\\OneDrive\\Documentos\\TCC_10_09\\EmmanuelJYokoyama\\TCC_PDI\\TCC_PDI\\TCC_PDI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\aluno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arthu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.214\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
         }
       }
     }

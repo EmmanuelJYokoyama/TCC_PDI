@@ -14,7 +14,14 @@ namespace TCC_PDI
         //Construtor
         public Form1()
         {
+
+            using (FormModal modal = new FormModal())
+            {
+                modal.ShowDialog();
+            }
+
             InitializeComponent();
+            
             this.WindowState = FormWindowState.Maximized;
             bordaBtn = new Panel();
             bordaBtn.Size = new Size(7, 70);
@@ -113,5 +120,6 @@ namespace TCC_PDI
         {
             Resetar();
         }
+
     }
 }

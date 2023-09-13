@@ -2,11 +2,8 @@
 using AForge.Video.DirectShow;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TCC_PDI.Forms
@@ -18,13 +15,13 @@ namespace TCC_PDI.Forms
         VideoCaptureDevice videoCaptureDevice;
 
         bool foco;
+        int pixelsBrancos = 0;
+        int pixelsPretos = 0;
         int coluna = 0;
         int linha = 0;
-        bool verf = false;
-        float area = 0;
-        Bitmap img;
-        Bitmap imgnova;
-        string nomeFormatado = DateTime.Now.ToString("dd_MM_yyyy-HH_mm_ss");
+        float areaOcupada = 0f;
+        Bitmap imgOriginal;
+        Bitmap[] vetorImgs = new Bitmap[2];
 
         public FormImage()
         {
@@ -37,17 +34,6 @@ namespace TCC_PDI.Forms
             cmbCameras.SelectedIndex = 0;
             videoCaptureDevice = new VideoCaptureDevice();
         }
-
-        private void FormImage_Load(object sender, EventArgs e)
-        {
-
-            videoCaptureDevice = new VideoCaptureDevice
-                (filterInfoCollection[cmbCameras.SelectedIndex].MonikerString);
-
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
-        }
-
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs e)
         {
             if (foco)
@@ -57,18 +43,9 @@ namespace TCC_PDI.Forms
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //if (videoCaptureDevice.)
-            //{
-            //    videoCaptureDevice;
-            //    picBoxCam.Image = null;
-            //}  
-        }
-
         void Abrir_Banco()
         {
-            string database = "SERVER=databasedojapa.c4fsrgel8mzi.sa-east-1.rds.amazonaws.com;DATABASE=PDI;UID=root;PASSWORD=euamoopaulo;";
+            string database = "SERVER=localhost;DATABASE=pdi;UID=root;PASSWORD=;";
             MySqlConnection connection = new MySqlConnection(database);
             MySqlCommand command = connection.CreateCommand();
             connection.Open();
@@ -83,9 +60,8 @@ namespace TCC_PDI.Forms
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            picBoxImg.Image = null;
+            fecharCamera();
             foco = false;
-            carregar_img.Visible = true;
             tirarFoto.Visible = false;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "(*.jpg)|";
@@ -93,114 +69,103 @@ namespace TCC_PDI.Forms
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 String path = ofd.FileName;
-                Bitmap img = new Bitmap(path);
-                picBoxCam.Image = img;
+                imgOriginal = new Bitmap(path);
+                picBoxCam.Image = imgOriginal;
+                carregar_img.Visible = true;
+                abrirCamera.Visible = true;
             }
 
         }
 
-        Bitmap ProcessarImg(int indiceLimiar)
+        Bitmap[] ProcessarImg(int indiceLimiar)
         {
-            img = new Bitmap(picBoxCam.Image);
-            verf = true;
-            coluna = img.Width; // O número colunas 
-            linha = img.Height; // O número de linhas
-            imgnova = new Bitmap(coluna, linha);
+            coluna = linha = 0;
+            coluna = imgOriginal.Width; // O número colunas 
+            linha = imgOriginal.Height; // O número de linhas
+            label6.Text = (coluna * linha).ToString();
+            Bitmap imgPretoBranco = new Bitmap(coluna, linha);
+            Bitmap imgEscalaCinza = new Bitmap(coluna, linha);
+
+            vetorImgs = new Bitmap[2] { imgPretoBranco, imgEscalaCinza };
+
+            int[] histograma_GrayLevel = new int[256];
+            pixelsBrancos = pixelsPretos = 0;
+            areaOcupada = 0;
+
             Color cor = new Color();
-            for (int i = 0; i <= coluna - 1; i++)
+
+            for (int i = 0; i < coluna; i++)
             {
-                for (int j = 0; j <= linha - 1; j++)
+                for (int j = 0; j < linha; j++)
                 {
-                    double r = img.GetPixel(i, j).R;
-                    double g = img.GetPixel(i, j).G;
-                    double b = img.GetPixel(i, j).B;
+                    double r = imgOriginal.GetPixel(i, j).R;
+                    double g = imgOriginal.GetPixel(i, j).G;
+                    double b = imgOriginal.GetPixel(i, j).B;
 
                     double K = r * 0.3 + g * 0.59 + b * 0.11;
+                    histograma_GrayLevel[(int)K] += 1;
+
+                    cor = definirCor(K, K, K);
+                    vetorImgs[1].SetPixel(i, j, cor);
 
                     if (K >= indiceLimiar)
+                    {
                         K = 255;
+                        pixelsBrancos++;
+                    }
                     else
+                    {
                         K = 0;
+                        pixelsPretos++;
+                    }
 
-                    cor = definirCor((int)K, (int)K, (int)K);
-                    imgnova.SetPixel(i, j, cor);
+                    cor = definirCor(K,K,K);
+                    vetorImgs[0].SetPixel(i, j, cor);
 
                 }
             }
-            imgnova.Save(nomeFormatado + ".jpg");
+
+            File.WriteAllText(@"dados.xml", "<Registro>");
+            for (int i = 0; i <= 255; i++)
+            {
+                File.AppendAllText(@"dados.xml", " < Dado>" + Environment.NewLine + "<Espectro>" + histograma_GrayLevel[i] + "</Espectro>" + Environment.NewLine + "</Dado>");
+            }
+            File.AppendAllText(@"dados.xml", "</Registro>");
+
             GC.Collect();
-            return imgnova;
+            return vetorImgs;
+        }
+        private void tirarFoto_Click(object sender, EventArgs e)
+        {
+            imgOriginal = new Bitmap(picBoxCam.Image);
+            salvarImagem.Visible = true;
+            vetorImgs = ProcessarImg(127);
+            picBoxImg.Image = vetorImgs[0];
         }
 
         private void carregar_img_Click(object sender, EventArgs e)
         {
-            picBoxImg.Image = ProcessarImg(127);
-        }
-
-        private void tirarFoto_Click(object sender, EventArgs e)
-        {
-            picBoxImg.Image = ProcessarImg(127);
+            trackBar1.Value = 127;
+            salvarImagem.Visible = true;
+            vetorImgs = ProcessarImg(127);
+            picBoxImg.Image = vetorImgs[0];
         }
 
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             if (picBoxImg.Image == null)
-            {
                 MessageBox.Show("CARREGUE A IMAGEM");
-
-            }
             else
-            {
-                picBoxImg.Image = ProcessarImg(trackBar1.Value);
-            }
-
+                vetorImgs = ProcessarImg(trackBar1.Value);
+                picBoxImg.Image = vetorImgs[0];
         }
 
-        private void dados_img_Click(object sender, EventArgs e)
+        private void abrir_trocarCamera()
         {
-            imgnova = new Bitmap(nomeFormatado + ".jpg");
-            coluna = imgnova.Width;
-            linha = imgnova.Height;
-            int pixelsB = 0;
-            int pixelsP = 0;
-
-            if (verf == true)
-            {
-                for (int i = 0; i <= coluna - 1; i++)
-                {
-                    for (int j = 0; j <= linha - 1; j++)
-                    {
-                        int r = imgnova.GetPixel(i, j).R;
-                        int g = imgnova.GetPixel(i, j).G;
-                        int b = imgnova.GetPixel(i, j).B;
-
-                        if (r == 255 && g == 255 && b == 255)
-                            pixelsB++;
-                        else
-                            pixelsP++;
-                    }
-                }
-                //MessageBox.Show(coluna.ToString() + "\n" + linha.ToString());
-
-
-                MessageBox.Show("PIXELS BRANCOS: " + pixelsB.ToString() + "\nPIXELS PRETOS: " + pixelsP.ToString());
-                area = 100 * ((pixelsB / (float)(coluna * linha)));
-            }
-            else
-            {
-                MessageBox.Show("PROCESSE A IMAGEM PRIMEIRO!");
-            }
-
-            label2.Text = (((int)area).ToString() + "% da área total vazia.");
-        }
-
-   
-        private void abrirCamera_Click(object sender, EventArgs e)
-        {
-            abrirCamera.Visible = false;
-            picBoxImg.Image = null;
             foco = true;
+            carregar_img.Visible = false;
             tirarFoto.Visible = true;
+            abrirCamera.Visible = false;
 
             videoCaptureDevice = new VideoCaptureDevice
             (filterInfoCollection[cmbCameras.SelectedIndex].MonikerString);
@@ -208,24 +173,43 @@ namespace TCC_PDI.Forms
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             videoCaptureDevice.Start();
         }
-
-
-
-
-
-
-
-
-
-        /*----------------------------------------------------------------*/
-        private void cmbCameras_SelectedIndexChanged(object sender, EventArgs e)
+   
+        private void abrirCamera_Click(object sender, EventArgs e)
         {
-
+            abrir_trocarCamera();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void fecharCamera()
         {
+            if(!(videoCaptureDevice == null))
+                if (videoCaptureDevice.IsRunning)
+                {
+                    videoCaptureDevice.NewFrame -= VideoCaptureDevice_NewFrame;
+                    videoCaptureDevice.SignalToStop();
+                    videoCaptureDevice = null;
+                }
+        }
 
+        private void salvarImagem_Click(object sender, EventArgs e)
+        {
+            vetorImgs[0].Save("ImgPretoBranco.jpg");
+            vetorImgs[1].Save("ImgEscalaCinza.jpg");
+
+            areaOcupada = 100 * (pixelsBrancos / (float)(coluna * linha));
+
+            label2.Text = areaOcupada.ToString("0.00") + "% da área total ocupada.";
+
+            if (areaOcupada <= 33.3)
+                label3.Text = "Ocupação ruim.";
+            else if (areaOcupada <= 66.6)
+                label3.Text = "Ocupação regular.";
+            else
+                label3.Text = "Boa ocupação.";
+        }
+
+        private void FormImage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fecharCamera();
         }
     }
 }

@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCC_PDI", "TCC_PDI\TCC_PDI.csproj", "{352B79A2-4BF9-4EB4-A286-BB0D2FD94B68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCC_PDI", "TCC_PDI\TCC_PDI.csproj", "{352B79A2-4BF9-4EB4-A286-BB0D2FD94B68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{393A4B1E-62C6-4A2F-94F3-B7AF3DD627B7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
